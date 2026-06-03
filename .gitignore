@@ -1,0 +1,14 @@
+# Nested empty repo folder (safe to ignore)
+/Kairo/
+
+/node_modules
+/.next/
+/out/
+/build
+*.pem
+.env*
+!.env.example
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*

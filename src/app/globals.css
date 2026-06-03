@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+html,
+body {
+  background-color: #f4f4f5;
+  color: #18181b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle page background with a soft radial wash like the reference */
+body {
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, #ffffff 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(800px 400px at 80% 10%, rgba(124, 92, 252, 0.06) 0%, rgba(124, 92, 252, 0) 70%);
+}
+
+.kairo-scroll {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+::selection {
+  background: rgba(124, 92, 252, 0.2);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
