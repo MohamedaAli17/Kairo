@@ -57,9 +57,9 @@ function aggregatePerformance(
     return Math.min(100, Math.max(0, Math.round(50 + mean * 5)));
   };
 
-  const codeQuality = avg("code_quality", 75);
-  const onTime = avg("delivery", 70);
-  const communication = avg("communication", 72);
+  const codeQuality = avg("code_quality", 0);
+  const onTime = avg("delivery", 0);
+  const communication = avg("communication", 0);
   const overall = Math.round(
     (reputation + codeQuality + onTime + communication) / 4,
   );

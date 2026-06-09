@@ -45,11 +45,11 @@ export function BuiltForEveryone() {
                   <span className="text-[9px] font-semibold text-zinc-500">Weekly</span>
                 </div>
                 <div className="flex items-end gap-2">
-                  <div className="h-7 w-3 rounded bg-orange-400" />
-                  <div className="h-10 w-3 rounded bg-indigo-500" />
-                  <div className="h-6 w-3 rounded bg-amber-400" />
-                  <div className="h-8 w-3 rounded bg-violet-500" />
-                  <div className="h-5 w-3 rounded bg-sky-400" />
+                  <div className="h-7 w-3 rounded bg-accent/60" />
+                  <div className="h-10 w-3 rounded bg-accent" />
+                  <div className="h-6 w-3 rounded bg-ink/30" />
+                  <div className="h-8 w-3 rounded bg-accent-dark" />
+                  <div className="h-5 w-3 rounded bg-ink/20" />
                 </div>
               </div>
             </div>
@@ -185,7 +185,7 @@ export function BuiltForEveryone() {
                   {["A", "M", "Z", "R", "N"].map((u) => (
                     <div
                       key={u}
-                      className="grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br from-indigo-100 to-violet-200 text-[9px] font-semibold text-indigo-700"
+                      className="grid h-6 w-6 place-items-center rounded-full bg-accent-soft text-[9px] font-semibold text-accent-dark"
                     >
                       {u}
                     </div>

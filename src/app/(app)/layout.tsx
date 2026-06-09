@@ -10,7 +10,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const shell = await getAppShellData(user.id);
 
   return (
-    <div className="flex min-h-screen bg-[#f1f5f9]">
+    <div className="flex min-h-screen bg-canvas">
       <AppSidebar
         displayName={shell.displayName}
         unreadBadge={shell.unreadBadge > 0 ? shell.unreadBadge : undefined}

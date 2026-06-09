@@ -36,15 +36,15 @@ export function AppSidebar({ unreadBadge }: AppSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-screen w-[240px] shrink-0 flex-col bg-[#0f172a] text-white">
-      <div className="flex items-center gap-2.5 border-b border-white/10 px-5 py-5">
-        <span className="relative h-7 w-7 overflow-hidden rounded-md">
+    <aside className="m-3 flex h-[calc(100vh-1.5rem)] w-[244px] shrink-0 flex-col rounded-3xl bg-white shadow-soft">
+      <div className="flex items-center gap-2.5 px-6 py-6">
+        <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-2xl bg-ink">
           <Image src="/brand/kairo-logo.png" alt="Kairo" fill className="object-cover" />
         </span>
-        <span className="text-lg font-semibold tracking-tight">Kairo</span>
+        <span className="text-lg font-bold tracking-tight text-ink">Kairo</span>
       </div>
 
-      <nav className="flex-1 space-y-1 px-3 py-4">
+      <nav className="flex-1 space-y-1 px-3 py-2">
         {navItems.map((item) => {
           const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
           const Icon = item.icon;
@@ -55,16 +55,21 @@ export function AppSidebar({ unreadBadge }: AppSidebarProps) {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-2xl px-3.5 py-2.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-white/10 text-white"
-                  : "text-slate-400 hover:bg-white/5 hover:text-white",
+                  ? "bg-accent text-white shadow-pill"
+                  : "text-muted hover:bg-black/[0.04] hover:text-ink",
               )}
             >
-              <Icon className="h-4 w-4 shrink-0" />
+              <Icon className="h-[18px] w-[18px] shrink-0" />
               <span className="flex-1">{item.label}</span>
               {badge ? (
-                <span className="grid h-5 min-w-5 place-items-center rounded-full bg-red-500 px-1.5 text-[10px] font-bold">
+                <span
+                  className={cn(
+                    "grid h-5 min-w-5 place-items-center rounded-full px-1.5 text-[10px] font-bold",
+                    active ? "bg-white/25 text-white" : "bg-accent text-white",
+                  )}
+                >
                   {badge > 9 ? "9+" : badge}
                 </span>
               ) : null}
@@ -73,13 +78,13 @@ export function AppSidebar({ unreadBadge }: AppSidebarProps) {
         })}
       </nav>
 
-      <div className="border-t border-white/10 p-3">
+      <div className="p-3">
         <form action="/auth/signout" method="post">
           <button
             type="submit"
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+            className="flex w-full items-center gap-3 rounded-2xl px-3.5 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-black/[0.04] hover:text-ink"
           >
-            <LogOut className="h-4 w-4" />
+            <LogOut className="h-[18px] w-[18px]" />
             Logout
           </button>
         </form>

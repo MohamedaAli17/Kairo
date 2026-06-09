@@ -11,19 +11,19 @@ export default function CalendarPage() {
   const [view, setView] = useState<"Day" | "Week" | "Month">("Week");
 
   return (
-    <div className="flex min-h-full flex-col p-6 md:p-8">
+    <div className="flex min-h-full flex-col p-4 md:p-6">
       <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold text-slate-900">Calendar</h1>
-        <div className="flex items-center gap-2">
+        <h1 className="text-2xl font-bold tracking-tight text-ink">Calendar</h1>
+        <div className="flex items-center gap-2 rounded-full bg-white p-1 shadow-soft">
           {(["Day", "Week", "Month"] as const).map((v) => (
             <button
               key={v}
               type="button"
               onClick={() => setView(v)}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+              className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
                 view === v
-                  ? "bg-indigo-600 text-white"
-                  : "bg-white text-slate-600 hover:bg-slate-100"
+                  ? "bg-accent text-white"
+                  : "text-muted hover:text-ink"
               }`}
             >
               {v}
@@ -33,23 +33,23 @@ export default function CalendarPage() {
       </header>
 
       <div className="mb-4 flex items-center gap-3">
-        <button type="button" className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+        <button type="button" className="q-btn-ghost px-4 py-1.5">
           Today
         </button>
-        <button type="button" className="rounded-lg p-1.5 text-slate-500 hover:bg-white">
+        <button type="button" className="grid h-9 w-9 place-items-center rounded-full text-muted hover:bg-white">
           <ChevronLeft className="h-5 w-5" />
         </button>
-        <button type="button" className="rounded-lg p-1.5 text-slate-500 hover:bg-white">
+        <button type="button" className="grid h-9 w-9 place-items-center rounded-full text-muted hover:bg-white">
           <ChevronRight className="h-5 w-5" />
         </button>
-        <span className="text-sm font-medium text-slate-700">May 20 – May 26, 2024</span>
+        <span className="text-sm font-semibold text-ink">May 20 – May 26, 2024</span>
       </div>
 
-      <div className="flex-1 overflow-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-        <div className="grid grid-cols-[60px_repeat(5,1fr)] border-b border-slate-200">
+      <div className="flex-1 overflow-auto rounded-3xl bg-white shadow-soft">
+        <div className="grid grid-cols-[60px_repeat(5,1fr)] border-b border-black/5">
           <div />
           {days.map((day) => (
-            <div key={day} className="border-l border-slate-200 px-2 py-3 text-center text-sm font-semibold text-slate-700">
+            <div key={day} className="border-l border-black/5 px-2 py-3 text-center text-sm font-semibold text-ink">
               {day}
             </div>
           ))}
@@ -58,11 +58,11 @@ export default function CalendarPage() {
         <div className="relative grid grid-cols-[60px_repeat(5,1fr)]">
           {hours.map((hour) => (
             <div key={hour} className="contents">
-              <div className="border-b border-slate-100 px-2 py-4 text-xs text-slate-400">
+              <div className="border-b border-black/5 px-2 py-4 text-xs text-muted">
                 {hour <= 12 ? `${hour} AM` : `${hour - 12} PM`}
               </div>
               {days.map((_, dayIdx) => (
-                <div key={`${hour}-${dayIdx}`} className="relative min-h-[48px] border-b border-l border-slate-100" />
+                <div key={`${hour}-${dayIdx}`} className="relative min-h-[48px] border-b border-l border-black/5" />
               ))}
             </div>
           ))}
@@ -88,7 +88,7 @@ export default function CalendarPage() {
         </div>
       </div>
 
-      <footer className="mt-4 flex flex-wrap gap-4 text-xs text-slate-600">
+      <footer className="mt-4 flex flex-wrap gap-4 text-xs text-muted">
         {Object.entries(eventColors).map(([type, color]) => (
           <span key={type} className="flex items-center gap-1.5 capitalize">
             <span className={`h-2.5 w-2.5 rounded-sm ${color}`} />

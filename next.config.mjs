@@ -6,6 +6,10 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
+  // Avoid corrupted @supabase vendor chunks during SSR (common in dev after HMR)
+  experimental: {
+    serverComponentsExternalPackages: ["@supabase/supabase-js", "@supabase/ssr"],
+  },
 };
 
 export default nextConfig;

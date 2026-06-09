@@ -6,7 +6,7 @@ type Variant = "dark" | "accent" | "brand" | "ghost";
 const variants: Record<Variant, string> = {
   dark: "bg-ink text-white hover:bg-black",
   accent: "bg-accent text-white hover:bg-accent-dark shadow-[0_10px_24px_-10px_rgba(244,88,42,0.7)]",
-  brand: "bg-brand text-white hover:bg-brand-dark shadow-[0_10px_24px_-10px_rgba(124,92,252,0.7)]",
+  brand: "bg-brand text-white hover:bg-brand-dark shadow-[0_10px_24px_-10px_rgba(244,88,42,0.7)]",
   ghost: "bg-transparent text-ink hover:bg-black/5",
 };
 

@@ -8,17 +8,17 @@
 
 html,
 body {
-  background-color: #f4f4f5;
-  color: #18181b;
+  background-color: #f3f1ee;
+  color: #1c1b1a;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Subtle page background with a soft radial wash like the reference */
+/* Warm light wash inspired by the QClay finance dashboard */
 body {
   background-image:
-    radial-gradient(1200px 600px at 50% -10%, #ffffff 0%, rgba(255, 255, 255, 0) 60%),
-    radial-gradient(800px 400px at 80% 10%, rgba(124, 92, 252, 0.06) 0%, rgba(124, 92, 252, 0) 70%);
+    radial-gradient(1200px 620px at 50% -12%, #ffffff 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(760px 420px at 88% 4%, rgba(244, 88, 42, 0.06) 0%, rgba(244, 88, 42, 0) 70%);
 }
 
 .kairo-scroll {
@@ -29,7 +29,39 @@ body {
 }
 
 ::selection {
-  background: rgba(124, 92, 252, 0.2);
+  background: rgba(244, 88, 42, 0.18);
+}
+
+@layer components {
+  /* Soft rounded white card — the core surface of the design */
+  .q-card {
+    @apply rounded-3xl bg-white p-5 shadow-soft;
+  }
+
+  /* Primary pill button (coral) */
+  .q-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-pill transition-colors hover:bg-accent-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  /* Dark pill button */
+  .q-btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  /* Subtle/ghost pill button */
+  .q-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-black/[0.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/10;
+  }
+
+  /* Small status / category chip */
+  .q-chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold;
+  }
+
+  /* Text input */
+  .q-input {
+    @apply w-full rounded-2xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink outline-none transition focus:border-accent/50 focus:ring-2 focus:ring-accent/15 placeholder:text-muted;
+  }
 }
 
 @layer utilities {

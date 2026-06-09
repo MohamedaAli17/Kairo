@@ -12,11 +12,8 @@ export const todaySchedule = [
   { time: "14:00", title: "Architecture Review", type: "review" as const },
 ];
 
-export const myTasks = [
-  { id: "BUG-123", title: "Fix pagination hook", status: "In Progress" as const },
-  { id: "FEAT-45", title: "Add user profile API", status: "To Do" as const },
-  { id: "BUG-221", title: "Payment gateway error", status: "Open" as const },
-];
+export { ticketDetails, getTicket, myTasks } from "@/lib/tickets";
+export type { TicketDetail, TicketActivity, TicketFile } from "@/lib/tickets";
 
 export const recentMessages = [
   { from: "AI Team Lead", preview: "Can you pick up BUG-221 today?", unread: true },
@@ -74,71 +71,6 @@ export const teamLeadMessages = [
     },
   },
 ];
-
-export type TicketDetail = {
-  id: string;
-  title: string;
-  priority: "High" | "Medium" | "Low";
-  status: "Open" | "In Progress" | "To Do" | "Done";
-  assignee: string;
-  reporter: string;
-  effort: number;
-  dueDate: string;
-  tags: string[];
-  description: string;
-  stepsToReproduce: string[];
-  expectedBehavior: string;
-};
-
-export const ticketDetails: Record<string, TicketDetail> = {
-  "BUG-221": {
-    id: "BUG-221",
-    title: "Payment gateway error",
-    priority: "High",
-    status: "Open",
-    assignee: "Alex",
-    reporter: "AI QA Bot",
-    effort: 4,
-    dueDate: "May 24, 2024",
-    tags: ["bug", "payment", "backend"],
-    description:
-      "Users are seeing a 500 error when completing checkout with certain card types. The failure appears intermittent but reproducible in staging.",
-    stepsToReproduce: [
-      "Add items to cart and proceed to checkout",
-      "Enter test card 4242 4242 4242 4242",
-      "Submit payment — observe 500 response from /api/payments",
-    ],
-    expectedBehavior: "Payment should succeed and order confirmation should display.",
-  },
-  "BUG-123": {
-    id: "BUG-123",
-    title: "Fix pagination hook",
-    priority: "Medium",
-    status: "In Progress",
-    assignee: "Alex",
-    reporter: "AI Team Lead",
-    effort: 2,
-    dueDate: "May 22, 2024",
-    tags: ["bug", "frontend"],
-    description: "Pagination resets to page 1 when filters change.",
-    stepsToReproduce: ["Apply a filter", "Navigate to page 2", "Change filter — page resets incorrectly"],
-    expectedBehavior: "Page should reset to 1 only when filter changes, preserving state otherwise.",
-  },
-  "FEAT-45": {
-    id: "FEAT-45",
-    title: "Add user profile API",
-    priority: "Medium",
-    status: "To Do",
-    assignee: "Alex",
-    reporter: "AI Product Manager",
-    effort: 5,
-    dueDate: "May 28, 2024",
-    tags: ["feature", "api"],
-    description: "Implement GET/PATCH endpoints for user profile with validation.",
-    stepsToReproduce: [],
-    expectedBehavior: "Profile endpoints return and update user data per spec.",
-  },
-};
 
 export const workspaceFiles = [
   { path: "src/controllers/paymentController.js", active: true },
